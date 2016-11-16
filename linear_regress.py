@@ -31,7 +31,10 @@ def best_fit():
 	preds = lm.predict(X_new)
 	data.plot(kind='scatter', x='Product', y='Sales')
 	plt.plot(X_new, preds, c='red', linewidth=2)
-	plt.show()
+	# regres = plt.plot(X_new, preds, c='red', linewidth=2)
+	# fig = regres.get_figure()
+	plt.savefig('public/img/plot.png')
+	#plt.show()
 
 	# calculate the R-squared
 	lm.score(X, y)
