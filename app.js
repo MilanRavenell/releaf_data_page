@@ -40,8 +40,19 @@ app.post('/upload', function(req, res){
   // parse the incoming request containing the form data
   form.parse(req);
 
+  const exec = require('child_process').exec;
+  exec('python linear_regress.py', (e, stdout, stderr)=> {
+    if (e instanceof Error) {
+        console.error(e);
+        throw e;
+    }
+    console.log('stdout ', stdout);
+    console.log('stderr ', stderr);
+  });
 });
 
 var server = app.listen(3000, function(){
   console.log('Server listening on port 3000');
 });
+
+
