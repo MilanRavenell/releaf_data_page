@@ -4,6 +4,11 @@ var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
 
+var command = 'python linear_regress.py ';
+var filename;
+var x_param = 'x';
+var y_param = 'y';
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res){
@@ -29,6 +34,19 @@ app.post('/upload', function(req, res){
   // rename it to it's orignal name
   form.on('file', function(field, file) {
     fs.rename(file.path, path.join(form.uploadDir, file.name));
+    filename = file.name;
+    regression(filename, x_param, y_param);
+  });
+
+  form.on('field', function(name, value) {
+    if (name == 'x') {
+      x_param = value;
+      console.log(x_param);
+    }
+    else if (name == 'y') {
+      y_param = value;
+      console.log(y_param);
+    }
   });
 
   // log any errors that occur
@@ -44,8 +62,18 @@ app.post('/upload', function(req, res){
   // parse the incoming request containing the form data
   form.parse(req);
 
+ 
+});
+
+var server = app.listen(3000, function(){
+  console.log('Server listening on port 3000');
+});
+
+function regression(file,x,y) {
+  console.log('hello');
+  var command = 'python linear_regress.py ' + file + ' ' + x + ' ' + y;
   const exec = require('child_process').exec;
-  exec('python linear_regress.py', (e, stdout, stderr)=> {
+  exec(command, (e, stdout, stderr)=> {
     if (e instanceof Error) {
         console.error(e);
         throw e;
@@ -53,8 +81,4 @@ app.post('/upload', function(req, res){
     console.log('stdout ', stdout);
     console.log('stderr ', stderr);
   });
-});
-
-var server = app.listen(3000, function(){
-  console.log('Server listening on port 3000');
-});
+}

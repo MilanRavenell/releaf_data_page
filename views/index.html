@@ -12,22 +12,28 @@
 </head>
 <body>
 
+
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="panel panel-default">
           <div class="panel-body">
+            <p> Select the columns on which you want to perform the regression, press Submit, then upload your spreadsheet</p>
+            <form id="parameters">
+            <input id="parameter1"  type="text" value="X Column"/><br>
+              <input id="parameter2" type="text" value="Y Column"/><br>
+              <input type="submit" value="Submit"/>
+            </form>
             <span class="glyphicon glyphicon-cloud-upload"></span>
             <h2>File Uploader</h2>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar"></div>
-            </div>
             <button class="btn btn-lg upload-btn" type="button">Upload File</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <img src='public/img/plot.png'>
 
   <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
 
