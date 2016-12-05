@@ -91,4 +91,5 @@ function regression(file,type,x,y) {
     console.log('stdout ', stdout);
     console.log('stderr ', stderr);
   });
+  window.location.reload();
 }

@@ -38,8 +38,7 @@
               <input id="parameter2" type="text" value="Y Column"/><br>
               <input type="submit" value="Submit"/>
             </form>
-            <img id='checkmark' src='/img/checkmark.jpg' alt='' style="visibility: hidden"><br> 
-            <span class="glyphicon glyphicon-cloud-upload"></span>
+            <img id="checkmark" src='/img/checkmark.jpg' alt='' width="50" height="50" style="display: none"><br>
             <h2>File Uploader</h2>
             <button class="btn btn-lg upload-btn" type="button">Upload File</button>
           </div>
@@ -51,7 +50,52 @@
   <img src='/img/plot.png' alt=''>
 
   <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
-  
+  <!-- <rf-header></rf-header>
+
+  <div ng-app="">
+    <p>Input something in the input box:</p>
+    <p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+    <h1>Hello {{name}}</h1>
+  </div>
+
+  <div id="rf-data" ng-app="rfDataSubmit">
+  <div class="row">
+    <div id="data-header">
+      <div id="data-title">Submit Data</div>
+
+      <div id="data-submit-menu">
+        <p ng-class="{selected: $ctrl.compareViewSelection(0)}">
+          <span ng-show="$ctrl.compareViewSelection(0)" class="menu-focus">></span>
+          Analysis Type
+        </p>
+
+        <p ng-class="{selected: $ctrl.compareViewSelection(1)}">
+          <span ng-show="$ctrl.compareViewSelection(1)" class="menu-focus">></span>
+          Parameters
+        </p>
+
+        <p ng-class="{selected: $ctrl.compareViewSelection(2)}">
+          <span ng-show="$ctrl.compareViewSelection(2)" class="menu-focus">></span>
+          Parameters
+        </p>
+
+        <p ng-class="{selected: $ctrl.compareViewSelection(3)}">
+          <span ng-show="$ctrl.compareViewSelection(3)" class="menu-focus">></span>
+          Upload File
+        </p>
+
+        <p ng-class="{selected: $ctrl.compareViewSelection(4)}">
+          <span ng-show="$ctrl.compareViewSelection(4)" class="menu-focus">></span>
+          Upload File
+        </p>
+      </div>
+    </div>
+
+    <div ng-switch on="$ctrl.partialViewSelection">
+        <ng-include src="$ctrl.getPartial()" onload="$ctrl.partialLoaded()"></ng-include>
+    </div>
+  </div>
+</div> -->
 
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
