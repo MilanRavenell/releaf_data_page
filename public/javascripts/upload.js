@@ -7,11 +7,14 @@ $('.upload-btn').on('click', function (){
 
 var X = 'X';
 var Y = 'Y';
+var type;
 
 $('#parameters').on('submit', function(e){
   e.preventDefault();
   X = $('#parameter1').val();
   Y = $('#parameter2').val();
+  type = $('#analysis-type').val();
+  $('#checkmark').show();
 });
 
 
@@ -42,7 +45,7 @@ $('#upload-input').on('change', function(){
 
     formData.append('x', X);
     formData.append('y', Y);
-    formData.append('done', 'done');
+    formData.append('type', type);
 
     $.ajax({
       url: '/upload',

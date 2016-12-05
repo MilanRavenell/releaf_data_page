@@ -6,8 +6,9 @@ var fs = require('fs');
 
 var command = 'python linear_regress.py ';
 var filename;
-var x_param = 'x';
-var y_param = 'y';
+var x_param;
+var y_param;
+var type;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -35,17 +36,26 @@ app.post('/upload', function(req, res){
   form.on('file', function(field, file) {
     fs.rename(file.path, path.join(form.uploadDir, file.name));
     filename = file.name;
-    regression(filename, x_param, y_param);
+    regression(filename, type, x_param, y_param);
   });
 
   form.on('field', function(name, value) {
     if (name == 'x') {
       x_param = value;
-      console.log(x_param);
+      console.log("x: " + x_param);
     }
     else if (name == 'y') {
       y_param = value;
-      console.log(y_param);
+      console.log("y: " + y_param);
+    }
+    else if (name == 'type') {
+      if (value == 'regression') {
+        type = 'linear_regress.py';
+      }
+      else {
+        type = 'cluster.py'
+      }
+      console.log("type: " + type);
     }
   });
 
@@ -69,9 +79,9 @@ var server = app.listen(3000, function(){
   console.log('Server listening on port 3000');
 });
 
-function regression(file,x,y) {
+function regression(file,type,x,y) {
   console.log('hello');
-  var command = 'python linear_regress.py ' + file + ' ' + x + ' ' + y;
+  var command = 'python' + ' ' + type + ' ' + file + ' ' + x + ' ' + y;
   const exec = require('child_process').exec;
   exec(command, (e, stdout, stderr)=> {
     if (e instanceof Error) {

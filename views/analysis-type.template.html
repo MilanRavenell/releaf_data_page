@@ -1,0 +1,23 @@
+<div class="panel-body">
+    <p> Select the columns on which you want to perform the regression, press Submit, then upload your spreadsheet</p>
+    <form id="analysis">
+	    <select id="analysis-type">
+	      <option value="regression">Regression</option>
+	      <option value="cluster">Cluster</option>
+	    </select>
+	    <input type="submit" value="Submit"/>
+    </form>
+</div>
+
+<script>
+	$('#analysis').on('submit', function(e)){
+		e.preventDefault();
+		var type = $('#analysis-type').val();
+		if (type == 'regression') {
+			$ctrl.updatePartialView('regression', valid = myForm.$valid);
+		}
+		else {
+			$ctrl.updatePartialView('cluster', valid = myForm.$valid);
+		}
+	}
+</script>
